@@ -1,0 +1,12 @@
+version: '2.1'
+services:
+  lfr:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+    - 8080:8080
+    - 8000:8000
+    - 11311:11311
+    volumes:
+    - ./modules:/workspace/modules

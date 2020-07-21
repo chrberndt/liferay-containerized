@@ -1,0 +1,7 @@
+.gradle
+.idea
+.gitignore
+**/.touch
+bundles
+gradlew.bat
+gradle-local.properties
