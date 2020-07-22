@@ -9,4 +9,4 @@ services:
     - 8000:8000
     - 11311:11311
     volumes:
-    - ./modules:/workspace/modules
+    - ./modules:/home/liferay/modules
