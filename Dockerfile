@@ -19,6 +19,7 @@ ENV TARGET_ENV "local"
 COPY --chown=liferay:liferay docker-entrypoint.sh .
 COPY --chown=liferay:liferay settings.gradle .
 COPY --chown=liferay:liferay build.gradle .
+COPY --chown=liferay:liferay configs/common configs/common
 COPY --chown=liferay:liferay configs/$TARGET_ENV configs/$TARGET_ENV
 COPY --chown=liferay:liferay themes themes
 COPY --chown=liferay:liferay modules modules
