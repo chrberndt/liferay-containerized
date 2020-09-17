@@ -1,12 +1,23 @@
 version: '2.1'
 services:
+  gradle:
+    build:
+      dockerfile: Dockerfile-gradle
+      context: .
+    volumes:
+      - ./modules:/home/liferay/modules
+      - lfr_osgi_modules:/home/liferay/bundles/osgi/modules
   lfr:
     build:
       dockerfile: Dockerfile
       context: .
+      args:
+        TARGET_ENV: local
     ports:
-    - 8080:8080
-    - 8000:8000
-    - 11311:11311
+      - 8080:8080
+      - 5005:8000
+      - 11311:11311
     volumes:
-    - ./modules:/home/liferay/modules
+      - lfr_osgi_modules:/home/liferay/bundles/osgi/modules
+volumes:
+  lfr_osgi_modules:
