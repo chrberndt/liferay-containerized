@@ -27,9 +27,10 @@ COPY --chown=liferay:liferay modules modules
 
 RUN ./gradlew initBundle -Pliferay.workspace.environment=$TARGET_ENV
 
-ENV JPDA_ADDRESS=8000
+ENV DEBUG_PORT=8000
+ENV JPDA_ADDRESS=*:$DEBUG_PORT
 ENV LIFERAY_JPDA_ENABLED=false
 
-EXPOSE 8080 11311 $JPDA_ADDRESS
+EXPOSE 8080 11311 $DEBUG_PORT
 
 ENTRYPOINT ["./start-liferay.sh"]
