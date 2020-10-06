@@ -4,6 +4,8 @@ services:
     build:
       dockerfile: Dockerfile-gradle
       context: .
+      args:
+        TARGET_ENV: local
     volumes:
       - ./modules:/home/liferay/modules
       - lfr_osgi_modules:/home/liferay/bundles/osgi/modules
