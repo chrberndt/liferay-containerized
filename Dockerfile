@@ -1,6 +1,8 @@
 FROM azul/zulu-openjdk-alpine:11
 
-RUN addgroup -S liferay && adduser -S liferay -G liferay && \
+ARG LIFERAY_UID
+
+RUN addgroup -S liferay && adduser -S liferay -G liferay -u ${LIFERAY_UID:-100} && \
     apk --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.10/main/ add \
     gcompat
 

@@ -1,11 +1,13 @@
-version: '2.1'
+version: "3"
+
 services:
   gradle:
     build:
-      dockerfile: Dockerfile-gradle
+      dockerfile: Dockerfile.gradle
       context: .
       args:
         TARGET_ENV: local
+        LIFERAY_UID: $UID
     volumes:
       - ./modules:/home/liferay/modules
       - lfr_osgi_modules:/home/liferay/bundles/osgi/modules
@@ -15,6 +17,7 @@ services:
       context: .
       args:
         TARGET_ENV: local
+        LIFERAY_UID: $UID
     environment:
       - LIFERAY_JPDA_ENABLED=true
     ports:
@@ -23,5 +26,6 @@ services:
       - 11311:11311
     volumes:
       - lfr_osgi_modules:/home/liferay/bundles/osgi/modules
+
 volumes:
   lfr_osgi_modules:
