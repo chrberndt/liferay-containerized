@@ -27,10 +27,13 @@ COPY --chown=liferay:liferay settings.gradle .
 COPY --chown=liferay:liferay build.gradle .
 COPY --chown=liferay:liferay configs/common configs/common
 COPY --chown=liferay:liferay configs/$TARGET_ENV configs/$TARGET_ENV
-COPY --chown=liferay:liferay themes themes
-COPY --chown=liferay:liferay modules modules
 
 RUN ./gradlew initBundle -Pliferay.workspace.environment=$TARGET_ENV
+
+COPY --chown=liferay:liferay modules modules
+COPY --chown=liferay:liferay themes themes
+
+RUN ./gradlew deploy
 
 ENV DEBUG_PORT=8000
 ENV JPDA_ADDRESS=*:$DEBUG_PORT

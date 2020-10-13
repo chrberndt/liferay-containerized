@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: liferay
+  name: liferay
+spec:
+  selector:
+    matchLabels:
+      app: liferay
+  template:
+    metadata:
+      labels:
+        app: liferay
+    spec:
+      containers:
+      - image: localhost:30555/liferay
+        name: liferay
+        readinessProbe:
+          httpGet:
+            path: /c/portal/layout
+            port: 8080
+
