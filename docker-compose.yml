@@ -6,7 +6,6 @@ services:
       dockerfile: Dockerfile.gradlew
       context: .
       args:
-        TARGET_ENV: local
         LIFERAY_UID: $UID
     volumes:
       - ./modules:/home/liferay/modules
@@ -25,7 +24,7 @@ services:
       - 5005:8000
       - 11311:11311
     volumes:
-      - lfr_osgi_modules:/home/liferay/bundles/osgi/modules
+      - lfr_osgi_modules:/opt/liferay/osgi/modules
 
 volumes:
   lfr_osgi_modules:
